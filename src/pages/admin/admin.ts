@@ -12,11 +12,12 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'admin.html'
 })
 export class Admin {
+data : any;
+constructor(public navCtrl: NavController) {
 
-  constructor(public navCtrl: NavController) {}
-
-  ionViewDidLoad() {
-    console.log('Hello Admin Page');
+  this.data = {};
+  this.data.title = "";
+  this.data.desc = "";
   }
 
 }
