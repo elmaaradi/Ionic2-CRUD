@@ -13,6 +13,7 @@ import { NavController } from 'ionic-angular';
 })
 export class Admin {
 data : any;
+public local : Storage;
 constructor(public navCtrl: NavController) {
 
   this.data = {};
