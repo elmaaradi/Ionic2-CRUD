@@ -20,7 +20,7 @@ export class MyService {
   }
 
   postLogin(data){
-   let link = "http://textkhmer.com/api/securelogin.php";
+   let link = "http://havais.org.tr/api/securelogin.php";
      return this.http.post(link,data)
       .map(res => res.json())
   }
@@ -30,22 +30,22 @@ export class MyService {
   }
 
   getData(){
-    let link ="http://textkhmer.com/api/select.php";
+    let link ="http://havais.org.tr/api/select.php";
     return this.http.get(link)
         .map(res => res.json())
   }
   postInsert(data){
-    let link ="http://textkhmer.com/api/insert.php";
+    let link ="http://havais.org.tr/api/insert.php";
     return this.http.post(link , data)
         .map(res => res.json())
   }
   postUpdate(data){
-    let link ="http://textkhmer.com/api/update.php";
+    let link ="http://havais.org.tr/api/update.php";
     return this.http.post(link , data)
         .map(res => res.json())
   }
   postDelete(data){
-    let link ="http://textkhmer.com/api/delete.php";
+    let link ="http://havais.org.tr/api/delete.php";
     return this.http.post(link , data)
         .map(res => res.json())
   }
