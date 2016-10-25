@@ -1,7 +1,11 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-$conn = new mysqli("localhost", "textkhmernews", "Excellent0", "khmernews");
+header("Content-Type: application/json; charset=UTF-8-turkish-ci");
+try {
+     $db = new PDO("mysql:host=localhost;dbname=havsorgs_dagitim", "havsorgs_dagit", "hi1b?BlMis9V");
+} catch ( PDOException $e ){
+     print $e->getMessage();
+}
 
 //http://stackoverflow.com/questions/18382740/cors-not-working-php
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -39,5 +43,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     }else {
          echo "No Parameter Available";
     }
+
+    /////////////////////////////////////////////////
+
+        $query = $db->prepare("INSERT INTO uyeler SET
+        uye_kadi = ?,
+        uye_sifre = ?,
+        uye_eposta = ?");
+        $insert = $query->execute(array(
+            "Tayfun Erbilen", "123456", "tayfunerbilen@gmail.com"
+        ));
+        if ( $insert ){
+            $last_id = $db->lastInsertId();
+            print "insert işlemi başarılı!";
+        }
+
+        ///////////////////////////////////////////////////
+
+        #INSERT DATA
+        //inserting some some data
+        $sqlInsert = 'INSERT INTO `testingdata` (`title`, `description`) 
+        VALUES (:name1,:job1),
+            (:name2,:job3), 
+            (:name3,:job3);';
+        $preparedStatement = $conn->prepare($sqlInsert);
+        $preparedStatement->execute(array(':name1' => 'Tony', ':job1' => 'gardner', ':name2' => 'Dony', ':job2' => 'carpenter', ':name3' => 'Carl', ':job3' => 'policeman'));
 
 ?>
